@@ -38,6 +38,7 @@ dependencies:
   get: ^4.6.5
   percent_indicator: ^4.2.3
   google_fonts: ^5.1.0
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:

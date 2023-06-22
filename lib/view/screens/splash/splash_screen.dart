@@ -2,11 +2,29 @@ import 'package:bdcalling_it_task/core/app_colors.dart';
 import 'package:bdcalling_it_task/core/app_icons.dart';
 import 'package:bdcalling_it_task/core/app_images.dart';
 import 'package:bdcalling_it_task/core/app_text_style.dart';
+import 'package:bdcalling_it_task/view/router/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
 
   const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+
+  @override
+  void initState() {
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+        statusBarColor: AppColors.transparentColor,
+        statusBarIconBrightness: Brightness.light
+    ));
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,23 +78,26 @@ class SplashScreen extends StatelessWidget {
                 ),
                 child: Row(
                   children: [
-                    Container(
-                      padding: const EdgeInsetsDirectional.symmetric(vertical: 20),
-                      width: 130,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: AppColors.primaryColor,
-                        borderRadius: BorderRadius.circular(30)
-                      ),
-                      child: const Text(
-                        "Start Now",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontFamily: "Nanotech",
-                          fontWeight: FontWeight.w700,
-                          fontSize: 18,
-                          height: 1.25,
-                          color:  Color(0xff333333),
+                    GestureDetector(
+                      onTap: () => Get.offAndToNamed(AppRouter.onboardScreen),
+                      child: Container(
+                        padding: const EdgeInsetsDirectional.symmetric(vertical: 20),
+                        width: 130,
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: AppColors.primaryColor,
+                          borderRadius: BorderRadius.circular(30)
+                        ),
+                        child: const Text(
+                          "Start Now",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontFamily: "Nanotech",
+                            fontWeight: FontWeight.w700,
+                            fontSize: 18,
+                            height: 1.25,
+                            color:  Color(0xff333333),
+                          ),
                         ),
                       ),
                     ),
