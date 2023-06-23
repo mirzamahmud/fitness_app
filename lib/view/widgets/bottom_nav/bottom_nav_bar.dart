@@ -51,7 +51,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
             child: Image.asset(
               iconList[index],
               height: 20, width: 20,
-              color: index == bottomNavIndex ? AppColors.primaryColor : AppColors.colorGrey,
+              color: index == bottomNavIndex ? AppColors.activeIconColor : AppColors.inactiveIconColor,
             ),
           )),
         ),

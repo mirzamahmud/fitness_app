@@ -16,6 +16,17 @@ class _HomeScreenState extends State<HomeScreen> {
   List<String> stringList = ["Morning", "Afternoon", "Evening", "Evening"];
   int selectedIndex = 0;
 
+  List<Map<String, String>> data = [
+    {
+      "title" : "Jumping",
+      "content" : "Perform your yoga and poses",
+    },
+    {
+      "title" : "Swimming",
+      "content" : "Perform your yoga and poses",
+    }
+  ];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -23,6 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         backgroundColor: AppColors.colorWhite,
         body: Stack(
+          clipBehavior: Clip.none,
           children: [
             Image.asset(
               AppImages.bgLineImage,
@@ -134,8 +146,11 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Positioned(
-              top: 253, left: 0, right: 0,
+              top: 253,
+              left: 0,
+              right: 0,
               child: Column(
+                mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SingleChildScrollView(
@@ -143,41 +158,45 @@ class _HomeScreenState extends State<HomeScreen> {
                     scrollDirection: Axis.horizontal,
                     physics: const BouncingScrollPhysics(),
                     child: Row(
-                      children: List.generate(stringList.length, (index) => GestureDetector(
-                        onTap: (){
-                          setState(() {
-                            selectedIndex = index;
-                          });
-                        },
-                        child: Container(
-                          alignment: Alignment.center,
-                          margin: const EdgeInsets.only(right: 10),
-                          padding: const EdgeInsetsDirectional.symmetric(vertical: 12, horizontal: 17),
-                          decoration: BoxDecoration(
+                      children: List.generate(
+                        stringList.length,
+                            (index) => GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              selectedIndex = index;
+                            });
+                          },
+                          child: Container(
+                            alignment: Alignment.center,
+                            margin: const EdgeInsets.only(right: 10),
+                            padding: const EdgeInsetsDirectional.symmetric(vertical: 12, horizontal: 17),
+                            decoration: BoxDecoration(
                               color: index == selectedIndex ? AppColors.primaryColor : AppColors.colorBlack,
-                              borderRadius: BorderRadius.circular(20)
-                          ),
-                          child: Text(
-                            stringList[index],
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Text(
+                              stringList[index],
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
                                 color: index == selectedIndex ? AppColors.colorBlack : AppColors.colorWhite,
                                 fontWeight: FontWeight.w400,
                                 fontSize: 16,
-                                fontFamily: "Nanotech"
+                                fontFamily: "Nanotech",
+                              ),
                             ),
                           ),
                         ),
-                      )),
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 30),
-                  Padding(
-                    padding: const EdgeInsetsDirectional.symmetric(horizontal: 25),
-                    child: Column(
-                      children: List.generate(2, (index) => SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        height: 200,
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height,
+                    child: ListView.builder(
+                      itemCount: 2, // Increase the item count as needed
+                      padding: const EdgeInsets.only(top: 50),
+                      physics: const BouncingScrollPhysics(),
+                      itemBuilder: (context, index) => Padding(
+                        padding: const EdgeInsets.only(bottom: 30),
                         child: Stack(
                           alignment: Alignment.center,
                           clipBehavior: Clip.none,
@@ -187,11 +206,55 @@ class _HomeScreenState extends State<HomeScreen> {
                               height: 170,
                               width: MediaQuery.of(context).size.width,
                             ),
+                            Positioned(
+                              bottom: 5,
+                              left: 0,
+                              right: 0,
+                              child: Image.asset(
+                                AppImages.rectangle3,
+                                height: 180,
+                                width: MediaQuery.of(context).size.width,
+                              ),
+                            ),
+                            Positioned.fill(
+                              bottom: 10,
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      data[index]["title"]!,
+                                      textAlign: TextAlign.center,
+                                      style: const TextStyle(
+                                        color: AppColors.primaryColor,
+                                        fontFamily: "Nanotech",
+                                        fontSize: 28,
+                                        fontWeight: FontWeight.w700,
+                                        letterSpacing: 2
+                                      ),
+                                    ),
+                                    const SizedBox(height: 8),
+                                    Text(
+                                      data[index]["content"]!,
+                                      textAlign: TextAlign.center,
+                                      style: const TextStyle(
+                                        color: AppColors.colorWhite,
+                                        fontFamily: "Nanotech",
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            )
                           ],
                         ),
-                      )),
+                      ),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),

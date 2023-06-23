@@ -11,6 +11,8 @@ class AppColors{
   static const Color colorBlack_1 = Color(0xff343434);
   static const Color colorWhite = Color(0xffFFFFFF);
   static const Color colorGrey = Color(0xff5E5E5E);
+  static const Color inactiveIconColor = Color(0xffA7A9AB);
+  static const Color activeIconColor = primaryColor;
 
   static const Color transparentColor = Colors.transparent;
 }
