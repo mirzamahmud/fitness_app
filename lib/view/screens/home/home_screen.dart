@@ -1,8 +1,10 @@
 import 'package:bdcalling_it_task/core/app_colors.dart';
 import 'package:bdcalling_it_task/core/app_icons.dart';
 import 'package:bdcalling_it_task/core/app_images.dart';
+import 'package:bdcalling_it_task/view/router/app_router.dart';
 import 'package:bdcalling_it_task/view/widgets/bottom_nav/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -195,62 +197,65 @@ class _HomeScreenState extends State<HomeScreen> {
                       itemCount: 2, // Increase the item count as needed
                       padding: const EdgeInsets.only(top: 50),
                       physics: const BouncingScrollPhysics(),
-                      itemBuilder: (context, index) => Padding(
-                        padding: const EdgeInsets.only(bottom: 30),
-                        child: Stack(
-                          alignment: Alignment.center,
-                          clipBehavior: Clip.none,
-                          children: [
-                            Image.asset(
-                              AppImages.rectangle4,
-                              height: 170,
-                              width: MediaQuery.of(context).size.width,
-                            ),
-                            Positioned(
-                              bottom: 5,
-                              left: 0,
-                              right: 0,
-                              child: Image.asset(
-                                AppImages.rectangle3,
-                                height: 180,
+                      itemBuilder: (context, index) => GestureDetector(
+                        onTap: () => Get.toNamed(AppRouter.exerciseStepScreen),
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 30),
+                          child: Stack(
+                            alignment: Alignment.center,
+                            clipBehavior: Clip.none,
+                            children: [
+                              Image.asset(
+                                AppImages.rectangle4,
+                                height: 170,
                                 width: MediaQuery.of(context).size.width,
                               ),
-                            ),
-                            Positioned.fill(
-                              bottom: 10,
-                              child: Align(
-                                alignment: Alignment.center,
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      data[index]["title"]!,
-                                      textAlign: TextAlign.center,
-                                      style: const TextStyle(
-                                        color: AppColors.primaryColor,
-                                        fontFamily: "Nanotech",
-                                        fontSize: 28,
-                                        fontWeight: FontWeight.w700,
-                                        letterSpacing: 2
-                                      ),
-                                    ),
-                                    const SizedBox(height: 8),
-                                    Text(
-                                      data[index]["content"]!,
-                                      textAlign: TextAlign.center,
-                                      style: const TextStyle(
-                                        color: AppColors.colorWhite,
-                                        fontFamily: "Nanotech",
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w400,
-                                      ),
-                                    )
-                                  ],
+                              Positioned(
+                                bottom: 5,
+                                left: 0,
+                                right: 0,
+                                child: Image.asset(
+                                  AppImages.rectangle3,
+                                  height: 180,
+                                  width: MediaQuery.of(context).size.width,
                                 ),
                               ),
-                            )
-                          ],
+                              Positioned.fill(
+                                bottom: 10,
+                                child: Align(
+                                  alignment: Alignment.center,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        data[index]["title"]!,
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(
+                                          color: AppColors.primaryColor,
+                                          fontFamily: "Nanotech",
+                                          fontSize: 28,
+                                          fontWeight: FontWeight.w700,
+                                          letterSpacing: 2
+                                        ),
+                                      ),
+                                      const SizedBox(height: 8),
+                                      Text(
+                                        data[index]["content"]!,
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(
+                                          color: AppColors.colorWhite,
+                                          fontFamily: "Nanotech",
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),

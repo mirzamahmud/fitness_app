@@ -8,4 +8,5 @@ class AppIcons{
   static const String heartIcon = "assets/icons/heart.png";
   static const String searchIcon = "assets/icons/search.png";
   static const String filterIcon = "assets/icons/filter.png";
+  static const String favoriteIcon = "assets/icons/Vector.png";
 }

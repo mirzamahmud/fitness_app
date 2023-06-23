@@ -12,7 +12,11 @@ class AppColors{
   static const Color colorWhite = Color(0xffFFFFFF);
   static const Color colorGrey = Color(0xff5E5E5E);
   static const Color inactiveIconColor = Color(0xffA7A9AB);
+
   static const Color activeIconColor = primaryColor;
+  static const Color cardBgColor = Color(0xffB9B6C8);
+  static const Color dotColor = Color(0xffFE974D);
+  static const Color circleContainerColor = Color(0xffD8D1FF);
 
   static const Color transparentColor = Colors.transparent;
 }
