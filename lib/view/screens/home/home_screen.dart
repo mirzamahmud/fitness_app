@@ -196,6 +196,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     SizedBox(
                       height: MediaQuery.of(context).size.height,
                       child: ListView.builder(
+                        shrinkWrap: true,
                         itemCount: 2, // Increase the item count as needed
                         padding: const EdgeInsets.only(top: 50),
                         physics: const NeverScrollableScrollPhysics(),
