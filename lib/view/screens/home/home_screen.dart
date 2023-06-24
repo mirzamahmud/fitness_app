@@ -2,7 +2,7 @@ import 'package:bdcalling_it_task/core/app_colors.dart';
 import 'package:bdcalling_it_task/core/app_icons.dart';
 import 'package:bdcalling_it_task/core/app_images.dart';
 import 'package:bdcalling_it_task/view/router/app_router.dart';
-import 'package:bdcalling_it_task/view/widgets/bottom_nav/bottom_nav_bar.dart';
+import 'package:bdcalling_it_task/view/components/bottom_nav/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -46,8 +46,119 @@ class _HomeScreenState extends State<HomeScreen> {
                 width: double.infinity,
                 color: AppColors.colorBlack,
               ),
+              Padding(
+                padding: const EdgeInsets.only(top: 240),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SingleChildScrollView(
+                      padding: const EdgeInsets.only(left: 25),
+                      scrollDirection: Axis.horizontal,
+                      physics: const BouncingScrollPhysics(),
+                      child: Row(
+                        children: List.generate(
+                          stringList.length,
+                              (index) => GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                selectedIndex = index;
+                              });
+                            },
+                            child: Container(
+                              alignment: Alignment.center,
+                              margin: const EdgeInsets.only(right: 10),
+                              padding: const EdgeInsetsDirectional.symmetric(vertical: 12, horizontal: 17),
+                              decoration: BoxDecoration(
+                                color: index == selectedIndex ? AppColors.primaryColor : AppColors.colorBlack,
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Text(
+                                stringList[index],
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: index == selectedIndex ? AppColors.colorBlack : AppColors.colorWhite,
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 16,
+                                  fontFamily: "Nanotech",
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: 2, // Increase the item count as needed
+                      padding: const EdgeInsets.only(top: 45),
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) => GestureDetector(
+                        onTap: () => Get.toNamed(AppRouter.exerciseStepScreen),
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 30),
+                          child: Stack(
+                            alignment: Alignment.center,
+                            clipBehavior: Clip.none,
+                            children: [
+                              Image.asset(
+                                AppImages.rectangle4,
+                                height: 170,
+                                width: MediaQuery.of(context).size.width,
+                              ),
+                              Positioned(
+                                bottom: 5,
+                                left: 0,
+                                right: 0,
+                                child: Image.asset(
+                                  AppImages.rectangle3,
+                                  height: 180,
+                                  width: MediaQuery.of(context).size.width,
+                                ),
+                              ),
+                              Positioned.fill(
+                                bottom: 10,
+                                child: Align(
+                                  alignment: Alignment.center,
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        data[index]["title"]!,
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(
+                                            color: AppColors.primaryColor,
+                                            fontFamily: "Nanotech",
+                                            fontSize: 28,
+                                            fontWeight: FontWeight.w700,
+                                            letterSpacing: 2
+                                        ),
+                                      ),
+                                      const SizedBox(height: 8),
+                                      Text(
+                                        data[index]["content"]!,
+                                        textAlign: TextAlign.center,
+                                        style: const TextStyle(
+                                          color: AppColors.colorWhite,
+                                          fontFamily: "Nanotech",
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w400,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               Positioned(
-                top: 77, left: 25, right: 25,
+                top: 65, left: 25, right: 25,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -98,7 +209,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         )
                       ],
                     ),
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 25),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -146,123 +257,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         )
                       ],
                     )
-                  ],
-                ),
-              ),
-              Positioned(
-                top: 253,
-                left: 0,
-                right: 0,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SingleChildScrollView(
-                      padding: const EdgeInsets.only(left: 25),
-                      scrollDirection: Axis.horizontal,
-                      physics: const BouncingScrollPhysics(),
-                      child: Row(
-                        children: List.generate(
-                          stringList.length,
-                              (index) => GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                selectedIndex = index;
-                              });
-                            },
-                            child: Container(
-                              alignment: Alignment.center,
-                              margin: const EdgeInsets.only(right: 10),
-                              padding: const EdgeInsetsDirectional.symmetric(vertical: 12, horizontal: 17),
-                              decoration: BoxDecoration(
-                                color: index == selectedIndex ? AppColors.primaryColor : AppColors.colorBlack,
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              child: Text(
-                                stringList[index],
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  color: index == selectedIndex ? AppColors.colorBlack : AppColors.colorWhite,
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 16,
-                                  fontFamily: "Nanotech",
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      height: MediaQuery.of(context).size.height,
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        itemCount: 2, // Increase the item count as needed
-                        padding: const EdgeInsets.only(top: 50),
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemBuilder: (context, index) => GestureDetector(
-                          onTap: () => Get.toNamed(AppRouter.exerciseStepScreen),
-                          child: Padding(
-                            padding: const EdgeInsets.only(bottom: 30),
-                            child: Stack(
-                              alignment: Alignment.center,
-                              clipBehavior: Clip.none,
-                              children: [
-                                Image.asset(
-                                  AppImages.rectangle4,
-                                  height: 170,
-                                  width: MediaQuery.of(context).size.width,
-                                ),
-                                Positioned(
-                                  bottom: 5,
-                                  left: 0,
-                                  right: 0,
-                                  child: Image.asset(
-                                    AppImages.rectangle3,
-                                    height: 180,
-                                    width: MediaQuery.of(context).size.width,
-                                  ),
-                                ),
-                                Positioned.fill(
-                                  bottom: 10,
-                                  child: Align(
-                                    alignment: Alignment.center,
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Text(
-                                          data[index]["title"]!,
-                                          textAlign: TextAlign.center,
-                                          style: const TextStyle(
-                                            color: AppColors.primaryColor,
-                                            fontFamily: "Nanotech",
-                                            fontSize: 28,
-                                            fontWeight: FontWeight.w700,
-                                            letterSpacing: 2
-                                          ),
-                                        ),
-                                        const SizedBox(height: 8),
-                                        Text(
-                                          data[index]["content"]!,
-                                          textAlign: TextAlign.center,
-                                          style: const TextStyle(
-                                            color: AppColors.colorWhite,
-                                            fontFamily: "Nanotech",
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.w400,
-                                          ),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
                   ],
                 ),
               ),

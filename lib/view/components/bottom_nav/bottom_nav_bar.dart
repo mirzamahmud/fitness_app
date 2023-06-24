@@ -48,10 +48,18 @@ class _BottomNavBarState extends State<BottomNavBar> {
             onTap: (){
               _onTap(index);
             },
-            child: Image.asset(
-              iconList[index],
-              height: 20, width: 20,
-              color: index == bottomNavIndex ? AppColors.activeIconColor : AppColors.inactiveIconColor,
+            child: Container(
+              height: 30, width: 30,
+              alignment: Alignment.center,
+              decoration: const BoxDecoration(
+                color: AppColors.transparentColor,
+                shape: BoxShape.circle
+              ),
+              child: Image.asset(
+                iconList[index],
+                height: 20, width: 20,
+                color: index == bottomNavIndex ? AppColors.activeIconColor : AppColors.inactiveIconColor,
+              ),
             ),
           )),
         ),

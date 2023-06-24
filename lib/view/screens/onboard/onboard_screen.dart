@@ -13,7 +13,7 @@ class OnboardScreen extends StatefulWidget {
 
 class _OnboardScreenState extends State<OnboardScreen> {
 
-  final PageController pageController = PageController();
+  PageController pageController = PageController();
 
   List<Widget> widgets = [const FirstScreenContent(), const SecondScreenContent()];
 
@@ -41,9 +41,10 @@ class _OnboardScreenState extends State<OnboardScreen> {
       child: Scaffold(
         backgroundColor: AppColors.colorWhite,
         body: PageView.builder(
+          controller: pageController,
           scrollDirection: Axis.horizontal,
           itemCount: widgets.length,
-          itemBuilder: (context, index) => widgets[index]
+          itemBuilder: (context, index) => widgets[index],
         )
       ),
     );

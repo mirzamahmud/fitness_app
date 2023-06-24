@@ -56,7 +56,7 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
             ),
             Positioned(
-              top: 120,
+              top: 110,
               left: MediaQuery.of(context).viewPadding.left,
               right: MediaQuery.of(context).viewPadding.right,
               child: const Text(
@@ -68,7 +68,7 @@ class _SplashScreenState extends State<SplashScreen> {
             Positioned(
               left: 37,
               right: 37,
-              bottom: 80,
+              bottom: 75,
               child: Container(
                 padding: const EdgeInsetsDirectional.symmetric(horizontal: 10, vertical: 10),
                 width: MediaQuery.of(context).size.width,

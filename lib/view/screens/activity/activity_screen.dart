@@ -1,7 +1,7 @@
 import 'package:bdcalling_it_task/core/app_colors.dart';
 import 'package:bdcalling_it_task/core/app_icons.dart';
 import 'package:bdcalling_it_task/core/app_images.dart';
-import 'package:bdcalling_it_task/view/widgets/bottom_nav/bottom_nav_bar.dart';
+import 'package:bdcalling_it_task/view/components/bottom_nav/bottom_nav_bar.dart';
 import 'package:chart_sparkline/chart_sparkline.dart';
 import 'package:flutter/material.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -17,6 +17,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
 
   var data = [0.5, 0.0, 1.0, -0.3, 0.7, 0.5, 1.0];
   var days = ["T", "W", "T", "F", "S", "S", "M"];
+
   List<Map<String, dynamic>> bmiData = [
     {
       "color" : AppColors.primaryColor,
@@ -48,7 +49,7 @@ class _ActivityScreenState extends State<ActivityScreen> {
                 color: AppColors.colorBlack,
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 85, left: 25, right: 25),
+                padding: const EdgeInsets.only(top: 65, left: 25, right: 25),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

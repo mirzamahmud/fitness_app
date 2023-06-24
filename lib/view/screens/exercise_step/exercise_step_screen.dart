@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:bdcalling_it_task/core/app_colors.dart';
 import 'package:bdcalling_it_task/core/app_icons.dart';
 import 'package:bdcalling_it_task/core/app_images.dart';
-import 'package:bdcalling_it_task/view/widgets/button/circle_button.dart';
+import 'package:bdcalling_it_task/view/components/button/circle_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -59,7 +59,7 @@ class _ExerciseStepScreenState extends State<ExerciseStepScreen> {
             ),
             SingleChildScrollView(
               clipBehavior: Clip.none,
-              padding: EdgeInsets.only(top: isVisible ? 240 : 528, right: 25, bottom: 20),
+              padding: EdgeInsets.only(top: isVisible ? 230 : 515, right: 25, bottom: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -358,7 +358,7 @@ class _ExerciseStepScreenState extends State<ExerciseStepScreen> {
               ),
             ),
             Positioned(
-              top: 85, left: 25, right: 25,
+              top: 65, left: 25, right: 25,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

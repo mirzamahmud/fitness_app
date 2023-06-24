@@ -1,8 +1,8 @@
 import 'package:bdcalling_it_task/core/app_colors.dart';
 import 'package:bdcalling_it_task/core/app_icons.dart';
 import 'package:bdcalling_it_task/core/app_images.dart';
-import 'package:bdcalling_it_task/view/widgets/bottom_nav/bottom_nav_bar.dart';
-import 'package:bdcalling_it_task/view/widgets/button/circle_button.dart';
+import 'package:bdcalling_it_task/view/components/bottom_nav/bottom_nav_bar.dart';
+import 'package:bdcalling_it_task/view/components/button/circle_button.dart';
 import 'package:flutter/material.dart';
 
 class VideoGuideScreen extends StatefulWidget {
@@ -60,8 +60,8 @@ class _VideoGuideScreenState extends State<VideoGuideScreen> {
                 color: AppColors.colorBlack,
               ),
 
-              Positioned(
-                top: 85, left: 25, right: 25,
+              Padding(
+                padding: const EdgeInsets.only(top: 65, left: 25, right: 25),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

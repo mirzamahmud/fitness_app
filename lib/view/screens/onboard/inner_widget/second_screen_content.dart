@@ -4,7 +4,7 @@ import 'package:bdcalling_it_task/core/app_colors.dart';
 import 'package:bdcalling_it_task/core/app_icons.dart';
 import 'package:bdcalling_it_task/core/app_images.dart';
 import 'package:bdcalling_it_task/view/router/app_router.dart';
-import 'package:bdcalling_it_task/view/widgets/button/circle_button.dart';
+import 'package:bdcalling_it_task/view/components/button/circle_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -23,7 +23,7 @@ class SecondScreenContent extends StatelessWidget {
           color: AppColors.colorBlack,
         ),
         Positioned(
-          top: 88,
+          top: 65,
           left: 30,
           right: 30,
           child: Row(
@@ -62,7 +62,7 @@ class SecondScreenContent extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: 190,
+          top: 170,
           child: Column(
             children: [
               Container(
@@ -112,7 +112,7 @@ class SecondScreenContent extends StatelessWidget {
                 overflow: TextOverflow.ellipsis,
                 maxLines: 2,
               ),
-              const SizedBox(height: 20 * 3.5),
+              const SizedBox(height: 20 * 3),
               Image.asset(
                 AppImages.scaleImage,
                 height: 160, width: MediaQuery.of(context).size.width,
@@ -121,7 +121,7 @@ class SecondScreenContent extends StatelessWidget {
           ),
         ),
         Positioned(
-            top: 520,
+            top: 500,
             child: Container(
               height: 160, width: 170,
               alignment: Alignment.center,
@@ -160,12 +160,14 @@ class SecondScreenContent extends StatelessWidget {
             )
         ),
         Positioned(
-          bottom: 80,
+          bottom: 100,
           child: CircleButton(
             imageSrc: AppIcons.rightArrow,
             size: 70,
             iconSize: 35,
-            press: (){},
+            press: (){
+              Get.offAndToNamed(AppRouter.homeScreen);
+            },
           ),
         )
       ],

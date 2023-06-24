@@ -4,13 +4,18 @@ import 'package:bdcalling_it_task/core/app_colors.dart';
 import 'package:bdcalling_it_task/core/app_icons.dart';
 import 'package:bdcalling_it_task/core/app_images.dart';
 import 'package:bdcalling_it_task/view/router/app_router.dart';
-import 'package:bdcalling_it_task/view/widgets/button/circle_button.dart';
+import 'package:bdcalling_it_task/view/components/button/circle_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class FirstScreenContent extends StatelessWidget {
+class FirstScreenContent extends StatefulWidget {
   const FirstScreenContent({super.key});
 
+  @override
+  State<FirstScreenContent> createState() => _FirstScreenContentState();
+}
+
+class _FirstScreenContentState extends State<FirstScreenContent> {
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -23,7 +28,7 @@ class FirstScreenContent extends StatelessWidget {
           color: AppColors.colorBlack,
         ),
         Positioned.fill(
-          top: 88,
+          top: 65,
           child: Align(
             alignment: Alignment.topRight,
             child: Padding(
@@ -47,7 +52,7 @@ class FirstScreenContent extends StatelessWidget {
           ),
         ),
         Positioned(
-          top: 190,
+          top: 170,
           child: Column(
             children: [
               Container(
