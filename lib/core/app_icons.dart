@@ -9,4 +9,7 @@ class AppIcons{
   static const String searchIcon = "assets/icons/search.png";
   static const String filterIcon = "assets/icons/filter.png";
   static const String favoriteIcon = "assets/icons/Vector.png";
+  static const String pauseIcon = "assets/icons/pause.png";
+  static const String stopIcon = "assets/icons/stop.png";
+  static const String zoomOutIcon = "assets/icons/zoom_out.png";
 }

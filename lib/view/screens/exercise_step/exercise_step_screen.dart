@@ -3,9 +3,11 @@ import 'dart:math';
 import 'package:bdcalling_it_task/core/app_colors.dart';
 import 'package:bdcalling_it_task/core/app_icons.dart';
 import 'package:bdcalling_it_task/core/app_images.dart';
+import 'package:bdcalling_it_task/view/widgets/button/circle_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 class ExerciseStepScreen extends StatefulWidget {
   const ExerciseStepScreen({super.key});
@@ -34,6 +36,8 @@ class _ExerciseStepScreenState extends State<ExerciseStepScreen> {
     super.dispose();
   }
 
+  bool isVisible = true;
+
   @override
   Widget build(BuildContext context) {
 
@@ -55,7 +59,7 @@ class _ExerciseStepScreenState extends State<ExerciseStepScreen> {
             ),
             SingleChildScrollView(
               clipBehavior: Clip.none,
-              padding: const EdgeInsets.only(top: 240, right: 25),
+              padding: EdgeInsets.only(top: isVisible ? 240 : 528, right: 25, bottom: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -94,7 +98,7 @@ class _ExerciseStepScreenState extends State<ExerciseStepScreen> {
                   const SizedBox(height: 20),
                   Container(
                     width: MediaQuery.of(context).size.width,
-                    height: 500,
+                    height: isVisible ? 500 : 215,
                     margin: const EdgeInsets.only(left: 25),
                     decoration: const BoxDecoration(
                         color: AppColors.cardBgColor,
@@ -105,7 +109,6 @@ class _ExerciseStepScreenState extends State<ExerciseStepScreen> {
                         )
                     ),
                     child: Stack(
-                      clipBehavior: Clip.antiAlias,
                       children: [
                         Positioned(
                           top: 30, left: 35, right: 35,
@@ -183,59 +186,170 @@ class _ExerciseStepScreenState extends State<ExerciseStepScreen> {
                             ],
                           ),
                         ),
-                        Positioned(
+                        isVisible ? Positioned(
                           top: 100, left: 0, right: 0,
                           child: Align(
                             alignment: Alignment.center,
                             child: Container(
-                              height: 242, width: 242,
-                              padding: const EdgeInsets.all(12),
+                              height: 244, width: 244,
+                              padding: const EdgeInsets.all(25),
                               decoration: const BoxDecoration(
                                   color: AppColors.circleContainerColor,
                                   shape: BoxShape.circle
                               ),
+                              child: Stack(
+                                alignment: Alignment.center,
+                                clipBehavior: Clip.none,
+                                children: [
+                                  Container(
+                                    height: 188, width: 188,
+                                    padding: const EdgeInsets.all(25),
+                                    decoration: BoxDecoration(
+                                          border: Border.all(
+                                              color: AppColors.secondaryColor.withOpacity(0.3),
+                                              width: 1
+                                          ),
+                                          shape: BoxShape.circle
+                                      ),
+                                    child: Container(
+                                      height: 144, width: 144,
+                                      padding: const EdgeInsets.all(25),
+                                      alignment: Alignment.center,
+                                      decoration: const BoxDecoration(
+                                          color: AppColors.secondaryColor,
+                                          shape: BoxShape.circle
+                                      ),
+                                      child: const Text(
+                                        "48",
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          color: AppColors.primaryColor,
+                                          fontFamily: "Nanotech",
+                                          fontSize: 70,
+                                          fontWeight: FontWeight.w700,
+                                          letterSpacing: 2
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: Alignment.center,
+                                    child: CircularPercentIndicator(
+                                      backgroundColor: AppColors.transparentColor,
+                                      radius: 97.0,
+                                      lineWidth: 8.0,
+                                      animation: true,
+                                      percent: 0.4,
+                                      circularStrokeCap: CircularStrokeCap.round,
+                                      progressColor: AppColors.secondaryColor,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ) : const SizedBox(),
+                        Positioned.fill(
+                          bottom: 40, left: 50, right: 60,
+                          child: Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                CircleButton(
+                                  size: 60,
+                                  imageSrc: AppIcons.stopIcon,
+                                  iconSize: 15,
+                                  press: (){}
+                                ),
+                                CircleButton(
+                                    size: 80,
+                                    imageSrc: AppIcons.pauseIcon,
+                                    iconColor: AppColors.primaryColor,
+                                    iconSize: 22,
+                                    press: (){}
+                                ),
+                                CircleButton(
+                                    size: 60,
+                                    imageSrc: AppIcons.zoomOutIcon,
+                                    iconSize: 15,
+                                    press: (){
+                                      setState(() {
+                                        isVisible = !isVisible;
+                                      });
+                                    }
+                                )
+                              ],
                             ),
                           ),
                         ),
 
                         /// dots
-                        Positioned(
+                        isVisible ?Positioned(
                           top: 104,
                           left: 36,
                           child: Container(
                             height: 20, width: 20,
                             decoration: const BoxDecoration(color: AppColors.secondaryColor, shape: BoxShape.circle),
                           ),
-                        ),
-                        Positioned(
+                        ) : const SizedBox(),
+                        isVisible ? Positioned(
                           top: 124,
                           right: 45,
                           child: Container(
                             height: 13, width: 13,
                             decoration: const BoxDecoration(color: AppColors.secondaryColor, shape: BoxShape.circle),
                           ),
+                        ) : Positioned(
+                          top: 6,
+                          right: 6,
+                          child: Container(
+                            height: 15,
+                            width: 15,
+                            decoration: const BoxDecoration(
+                                color: AppColors.secondaryColor,
+                                borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(50),
+                                  bottomLeft: Radius.circular(30),
+                                )
+                            ),
+                          ),
                         ),
-                        Positioned(
+                        isVisible ? Positioned(
                           top: 267,
                           left: -36,
                           child: Container(
                             height: 52, width: 52,
                             decoration: const BoxDecoration(color: AppColors.secondaryColor, shape: BoxShape.circle),
                           ),
+                        ) : Positioned(
+                          top: 3,
+                          left: 3,
+                          child: Container(
+                            height: 24,
+                            width: 24,
+                            decoration: const BoxDecoration(
+                                color: AppColors.secondaryColor,
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(40),
+                                    bottomRight: Radius.circular(30),
+                                )
+                            ),
+                          ),
                         ),
                         Align(
-                          alignment: Alignment.bottomRight,
-                          child: Container(
-                            height: 40,
-                            width: 40,
-                            decoration: const BoxDecoration(
-                              color: AppColors.secondaryColor,
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(40),
-                                bottomRight: Radius.circular(40)
-                              )
-                            ),
-                          )
+                            alignment: Alignment.bottomRight,
+                            child: Container(
+                              height: 40,
+                              width: 40,
+                              decoration: const BoxDecoration(
+                                  color: AppColors.secondaryColor,
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(40),
+                                      bottomRight: Radius.circular(40)
+                                  )
+                              ),
+                            )
                         ),
                       ],
                     ),
