@@ -79,7 +79,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 child: Row(
                   children: [
                     GestureDetector(
-                      onTap: () => Get.offAndToNamed(AppRouter.onboardScreen),
+                      onTap: () => Get.offAndToNamed(AppRouter.firstOnboardScreen),
                       child: Container(
                         padding: const EdgeInsetsDirectional.symmetric(vertical: 20),
                         width: 130,

@@ -13,6 +13,8 @@ class AppColors{
   static const Color colorGrey = Color(0xff5E5E5E);
   static const Color colorRed = Color(0xffFB6955);
   static const Color inactiveIconColor = Color(0xffA7A9AB);
+  static const Color cardTextColor = Color(0xffF0EEFF);
+  static const Color cardTextColor1 = Color(0xffB2B1B8);
 
   static const Color activeIconColor = primaryColor;
   static const Color cardBgColor = Color(0xffB9B6C8);
