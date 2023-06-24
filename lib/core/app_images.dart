@@ -5,6 +5,7 @@ class AppImages{
   static const String bgLineImage = "assets/images/bg_line.png";
   static const String bgLineImage2 = "assets/images/bg_line_2.png";
   static const String scaleImage = "assets/images/weight_scale.png";
+  static const String chartImage = "assets/images/calory_chart.png";
 
   static const String avatarImage = "assets/images/avatar.png";
 

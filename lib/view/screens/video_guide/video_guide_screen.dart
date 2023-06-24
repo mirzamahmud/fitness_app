@@ -168,4 +168,10 @@ class _VideoGuideScreenState extends State<VideoGuideScreen> {
       ),
     );
   }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
 }

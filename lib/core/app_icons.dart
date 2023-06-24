@@ -13,4 +13,5 @@ class AppIcons{
   static const String stopIcon = "assets/icons/stop.png";
   static const String zoomOutIcon = "assets/icons/zoom_out.png";
   static const String playIcon = "assets/icons/play.png";
+  static const String unionIcon = "assets/icons/union.png";
 }
